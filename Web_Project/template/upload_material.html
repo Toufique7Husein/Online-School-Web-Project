@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
+
+    <!--for date/month/year -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
+    <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+
+    <!---->
+</head>
+
+<body>
+    <!--upload from start-->
+    <div class="py-20 h-screen bg-gray-300 px-2">
+        <div class="max-w-md mx-auto bg-white rounded-lg overflow-hidden md:max-w-lg">
+            <form class="max-w-md mx-auto bg-white rounded-lg overflow-hidden md:max-w-lg" enctype="multipart/form-data" action="upload_material" method="POST">
+                {% csrf_token %}
+                <div class="md:flex">
+                    <div class="w-full px-4 py-6 ">
+                        <div class="mb-1"> <span class="text-sm">title</span> <input type="text" name="title" class="h-12 px-3 w-full border-blue-400 border-2 rounded focus:outline-none focus:border-blue-600"> </div>
+                        <div class="form-group col-md-6 ffour py-3">
+                            <input id="datepicker" name="dateOfBirth" placeholder="Set Due Date" width="350" />
+                            <script>
+                                $('#datepicker').datepicker({
+                                    format: 'yyyy-mm-dd',
+                                    uiLibrary: 'bootstrap4'
+                                });
+                            </script>
+                        </div>
+                        <div class="mb-1"> <span class="text-sm text-gray-400">You will be able to edit this information later</span> </div>
+                        <div class="mb-1"> <span>Attachments</span>
+                            <div class="relative border-dotted h-32 rounded-lg border-dashed border-2 border-blue-700 bg-gray-100 flex justify-center items-center">
+                                <div class="absolute">
+                                    <div class="flex flex-col items-center"> <i class="fa fa-folder-open fa-3x text-blue-700"></i> <span class="block text-gray-400 font-normal">Attach you files here</span> </div>
+                                </div> <input type="file" class="h-full w-full opacity-0" name="file">
+                            </div>
+                        </div>
+                        <div class="mt-3 text-right"> <a href="{% url 'materials' %}">Cancel</a> <button class="ml-2 h-10 w-32 bg-blue-600 rounded text-white hover:bg-blue-700" type="submit">Create</button> </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!--upload from end-->
+
+</body>
+
+</html>

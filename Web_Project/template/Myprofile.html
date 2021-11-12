@@ -1,0 +1,137 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'styles/profile.css' %}" />
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!------........................ ---------->
+    <title>User Profile</title>
+</head>
+
+<body>
+    <div class="container emp-profile">
+        <form method="post">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="profile-img">
+                        <img src=" {{ user.image }}" alt="" style="width:250px;height:250px;">
+                        <div class="file btn btn-lg btn-primary">
+                            Change Photo
+                            <input type="file" name="file" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="profile-head">
+                        <h5>
+                            {{user.firstName}} {{ user.lastName }}
+                        </h5>
+                        <h6>
+                            {{ user.department }} Department {% if user.isStudent == True %} Student {% else %} Faculty {% endif %}
+                        </h6>
+                        <p class="institution">
+                            <span>NORTH SOUTH UNIVERSITY</span>
+                        </p>
+                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                            <li class="nav-item ">
+                                <a class="nav-link " id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">
+                  USER INFORMATION
+                </a>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-2">
+
+
+                    <a href="{% url 'edit_profile' %}">
+                        <input type="button" class="profile-edit-btn" name="Edit-Profile" value="Edit Profile" />
+                    </a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="profile-work">
+                        <p>MORE OPTIONS</p>
+                        <ul>
+                            <li><img src="{% static 'image/iconmonstr-home-6.svg' %}"> <a href="home">GO TO HOME </a></li>
+                            <li><img src="{% static 'image/iconmonstr-email-2.svg' %}"> <a href="#">MESSAGE/NITIFICATIONS </a></li>
+                            <li><img src="{% static 'Image/iconmonstr-log-out-4.svg' %}"><a href="{% url 'logout' %}">LOG OUT </a></li>
+                        </ul>
+
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="tab-content profile-tab" id="myTabContent">
+                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>User Id</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <p>{{ user.email }}</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Name</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <p>{{ user.firstName }} {{ user.lastname }}</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Email</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <p>{{ user.email }}</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Department</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <p>{{ user.department }}</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Birth Of Date</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <p>{{ user.dateOfBirth }}</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Gender</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <p>{{ user.gender }}</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Phone</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <p>{{ user.phoneNumber }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+    </form>
+    </div>
+</body>
+
+</html>

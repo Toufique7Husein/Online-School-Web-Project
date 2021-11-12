@@ -1,0 +1,116 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static '/classes/style.css' %}" />
+    <link rel="stylesheet" href="{% static '/classes/navbar.css' %}" />
+    <link rel="stylesheet" href="{% static '/styles/people.css' %}" />
+    <link rel="stylesheet" href="{% static 'styles/profile.css' %}" />
+    <script src="{% static '/classes/Js.js' %}"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+</head>
+
+<body>
+    <!---navbar start-->
+    <nav class="navbar navbar-expand-sm navbar-light bg-light">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'profile' %}">
+                        <img src="{{ user.image }}" alt="Avatar" class="avatar" />
+                    </a>
+                </li>
+                <li class="nav-item dropdown dmenu col-12">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                        <img src="{% static 'image/iconmonstr-home-6.svg' %}" alt="icon" class="icon" />
+                    </a>
+                    <div class="dropdown-menu sm-menu">
+                        <a class="dropdown-item" href="{% url 'home' %}">Home</a>
+                        <a class="dropdown-item" href="{% url 'classroom' %}">Classroom</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <h1> CLASSROOM</h1>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!---navbar end-->
+
+
+    <!-- start teachers -->
+
+
+    <div class="container rounded mt-5 bg-white p-md-5">
+        <div class="h2 font-weight-bold">Teachers</div>
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for p in people.facultyList %}
+                    <tr class="bg-red">
+                        <td class="pt-2"> <img src="{{ p.image }}" class="rounded-circle" alt="">
+                            <div class="pl-lg-6 pl-md-3 pl-1 name">{{ p.firstName }} {{ p.lastName }}</div>
+                        </td>
+                        <td class="pt-3 mt-1">{{ p.email }}</td>
+                        <td class="pt-3"><span class="fa fa-check pl-3"></span></td>
+                        <td class="pt-3"><span class="fa fa-ellipsis-v btn"></span></td>
+                    </tr>
+                    {% endfor %}
+                    <tr id="spacing-row">
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!--end teacher-->
+        {% if user.isFaculty %}
+        <div class="h2 font-weight-bold">Students</div>
+        {% else %}
+        <div class="h2 font-weight-bold">Classmats</div>
+        {% endif %}
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for p in people.studentList %}
+                    <tr class="bg-green">
+                        <td class="pt-2"> <img src="{{ p.image }}" class="rounded-circle" alt="">
+                            <div class="pl-lg-6 pl-md-3 pl-1 name">{{ p.firstName }} {{ p.lastName }}</div>
+                        </td>
+                        <td class="pt-3 mt-1">{{ p.email }}</td>
+                        <td class="pt-3"><span class="fa fa-check pl-3"></span></td>
+                        <td class="pt-3"><span class="fa fa-ellipsis-v btn"></span></td>
+                    </tr>
+                    {% endfor %}
+                    <td></td>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+
+</html>

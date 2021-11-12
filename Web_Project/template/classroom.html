@@ -1,0 +1,98 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static '/classes/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'styles/profile.css' %}" />
+    <link rel="stylesheet" href="{% static '/classes/navbar.css' %}" />
+    <script src="{% static '/classes/Js.js' %}"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!---navbar start-->
+    <nav class="navbar navbar-expand-sm navbar-light bg-light">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'profile' %}">
+                        <img src="{{ user.image }}" alt="Avatar" class="avatar" />
+                    </a>
+                </li>
+                <li class="nav-item dropdown dmenu">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                        <img src="{% static '/classes/p.svg' %}" alt="icon" class="icon" />
+                    </a>
+                    <div class="dropdown-menu sm-menu">
+                        {% if user.isStudent %}<a class="dropdown-item" href="{% url 'joinclass' %}">Join Class</a>{% endif %} {% if user.isFaculty %}<a class="dropdown-item" href="{% url 'creatclass' %}">Create Class</a>{% endif %}
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <h1> CLASSROOM</h1>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!---navbar end-->
+
+    <div class="container bootstrap snippets bootdeys">
+        <div class="row">
+
+
+            <!-- start card -->
+            {% if user.isFaculty %} {% for clss in user.classroom.all %}
+            <div class="col-md-3 col-sm-6 content-card">
+                <div class="card-big-shadow">
+                    <div class="card card-just-text">
+                        <img src="{{ user.image }}" alt="Avatar1" class="avatar1" />
+                        <div class="content">
+                            <h4 class="category">
+                                <a href="{% url 'enterClass' id=clss.id %}">{{ clss.title }}</a>
+                                <br/> {{ clss.section }}
+                            </h4>
+                            <h6 class="title">{{ user.firstName }} {{ user.lastName }} </h6>
+                            <p class="description">
+                                {{ clss.course_name }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %} {% else %} {% for clss in user.asList %}
+            <div class="col-md-3 col-sm-6 content-card">
+                <div class="card-big-shadow">
+                    <div class="card card-just-text">
+                        <img src="{{ clss.faculty.image }}" alt="Avatar1" class="avatar1" />
+                        <div class="content">
+                            <h4 class="category">
+                                <a href="{% url 'enterClass' id=clss.classroom.id %}">{{ clss.classroom.title }}</a>
+                                <br /> {{ clss.classroom.section }}
+                            </h4>
+                            <h6 class="title">{{ clss.faculty.firstName }} {{ clss.faculty.lastName }}</h6>
+                            <p class="description">
+                                {{ clss.classroom.course_name }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %} {% endif %}
+            <!-- end card -->
+        </div>
+    </div>
+</body>
+
+</html>

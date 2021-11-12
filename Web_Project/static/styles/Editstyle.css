@@ -1,0 +1,53 @@
+body {
+    background: -webkit-linear-gradient(left, #dfe7f1, #dfe7f1);
+}
+.page {
+    padding: 3%;
+    margin-top: 4%;
+    margin-bottom: 4%;
+    border-radius: 7%;
+    background: #f5f5f5;
+}
+
+.form-control:focus {
+    box-shadow: none;
+    border-color: #BA68C8
+}
+
+.profile-button {
+    background: rgb(99, 39, 120);
+    box-shadow: none;
+    border: none
+}
+
+.profile-button:hover {
+    background: #682773
+}
+
+.profile-button:focus {
+    background: #682773;
+    box-shadow: none
+}
+
+.profile-button:active {
+    background: #682773;
+    box-shadow: none
+}
+
+.back:hover {
+    color: #682773;
+    cursor: pointer
+}
+
+
+
+.profile-img img{
+    width: 70%;
+    height: 100%;
+    border-radius: 50%;
+}
+.img{
+    width: 100%;
+    height: 100%;
+    border-radius: 0%;
+}

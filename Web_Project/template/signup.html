@@ -1,0 +1,88 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="{% static 'styles/style.css' %}">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <!--- -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
+    <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+    <!--- -->
+
+
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container d-flex justify-content-center my-5">
+        <div class="row my-2 mx-2 main">
+            <!--left-column-->
+            <div class="col-md-4 col-12 mycol">
+                <!--image--><img src="{% static 'image/signuUp.jpg' %}" width="100%" height="50%"> </div>
+            <!--right-column-->
+            <div class="col-md-8 col-12 xcol">
+                <h2 class="title pt-5 pb-3">Sign up</h2>
+                <form class="myform" enctype="multipart/form-data" action="signup" method="POST">
+                    {% csrf_token %}
+                    <div class="row rone">
+                        <div class="form-group col-md-6 fone py-3"> <input type="text" class="form-control" name="firstName" placeholder="First name" required=""> </div>
+                        <div class="form-group col-md-6 ftwo py-3"> <input type="text" class="form-control" name="lastName" placeholder="Last name" required=""> </div>
+                    </div>
+                    <div class="row rone">
+                        <div class="form-group col-md-6 fone py-3">
+                            <select name="who" class="form-control">
+                            <option selected>Student or Faculty?</option>
+                            <option value="Faculty">Faculty</option>
+                            <option value="Student">Student</option>
+                          </select> </div>
+                        <div class="form-group col-md-6 ftwo py-3">
+                            <select name="gender" class="form-control">
+                            <option selected>Gender</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
+                          </select> </div>
+                    </div>
+                    <div class="row rtwo">
+                        <div class="form-group col-md-6 fthree py-3"> <input type="text" name="phoneNumber" class="form-control" placeholder="Phone"> </div>
+                        <div class="form-group col-md-6 ffour py-3"> <input type="email" name="email" class="form-control" placeholder="Your Email"> </div>
+                        <div class="form-group col-md-6 ffour py-3">
+                            <input id="datepicker" name="dateOfBirth" placeholder="Select Date of Birth" width="350" />
+                            <script>
+                                $('#datepicker').datepicker({
+                                    format: 'yyyy-mm-dd',
+                                    uiLibrary: 'bootstrap4'
+                                });
+                            </script>
+                        </div>
+                    </div>
+                    <div class="row rthree">
+                        <div class="form-group col-md-6 ffive py-3"> <input type="password" name="firstPass" class="form-control" placeholder="Password"> </div>
+                        <div class="form-group col-md-6 fsix py-3"> <input type="password" name="lastPass" class="form-control" placeholder="Confirm Password"> </div>
+                        <div class="form-group col-md-6 fsix py-3">
+                            <input type="file" name="image" class="form-control" placeholder="Upload image">
+                        </div>
+                    </div>
+                    <div class="row rfour">
+                        <div class="form-group col-md-6 fseven py-3"> <button type="submit" class="btn btn-primary"><span>Sign Up</span></button> </div>
+                        <div class="form-group col-md-6 feight py-3">
+                            <!--p class="text-muted">Already have an account?<br><a href="urls">Sign in</a></p-->
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

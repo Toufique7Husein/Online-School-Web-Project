@@ -29,9 +29,44 @@ mobile app will use it to scan documents.
 # Features
 
 * LOGIN MODULE:
-   The purpose of this module is to provide entry to the system or website. Based on
-   the type of login, the user is provided with various facilities and functionalities. The
-   main function of this module is to allow the user to use SMS. This module provides
-   two types of login —Faculty login and Student login.
+The purpose of this module is to provide entry to the system or website. Based on
+the type of login, the user is provided with various facilities and functionalities. The
+main function of this module is to allow the user to use SMS. This module provides
+two types of login —Faculty login and Student login.
+* Faculty Module:
+In this module when the faculty will enter his/her username and password, then
+he/she will enter into the home page and this page consists of two following sub
+modules.
+* Student Addition/ Updation / Deletion:
+In the Online school system each Student is added, updated or deleted
+according to its branch.
+Notification:
+Faculty can be alerted by this notification about important notices and
+other things.
+* Profile / Edit Profile:
+Faculty can see their profile, also they can edit their personal or
+academic information.
 
+* Questions From Student :
+Faculty can check or get questions from students in the selected pdf
+part .
+* Your class room:
+In this part faculty can assign students assignments, update and upload
+study materials , and submit gradings for assigned tasks.
+* STUDENT MODULE:
+In this module when a student enters his/her user id and password, then he/she can
+visit all the following pages.
+Profile View / Profile Edit:
+When the student clicks on this link he/she will get his/her information like student id,
+student name, password, date of birth, phone number, email. If he/she wants then
+he/she can edit the profile information.
+Notice View: Students will be able to check his/her notifications that are revealed by
+the faculty and will get information about the classroom.
+* Attendance View:
+When the student clicks on this one, the student can get his overall attendance
+percentage (present and absent).
+Question Here:
+Students can ask their question to a certain faculty.
+Your Answer : After clicking this bar, students can see their Questions answer from
+the desired Faculty
 

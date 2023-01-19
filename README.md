@@ -22,9 +22,16 @@ and private.
 
 # Hardware Interfaces:
 For the hardware interfaces, as the system is being developed as a web application
-and mobile application there are no restrictions to access the web application but the
-mobile application is only being developed for the Android OS. It is also expected
+and mobile application there are no restrictions to access the web application. It is also expected
 that the user will have a general idea on how to use the mobile device camera as the
 mobile app will use it to scan documents.
+
+# Features
+
+* LOGIN MODULE:
+  *The purpose of this module is to provide entry to the system or website. Based on
+  *the type of login, the user is provided with various facilities and functionalities. The
+  *main function of this module is to allow the user to use SMS. This module provides
+  *two types of login —Faculty login and Student login.
 
 

@@ -29,9 +29,9 @@ mobile app will use it to scan documents.
 # Features
 
 * LOGIN MODULE:
-  *The purpose of this module is to provide entry to the system or website. Based on
-  *the type of login, the user is provided with various facilities and functionalities. The
-  *main function of this module is to allow the user to use SMS. This module provides
-  *two types of login —Faculty login and Student login.
+   The purpose of this module is to provide entry to the system or website. Based on
+   the type of login, the user is provided with various facilities and functionalities. The
+   main function of this module is to allow the user to use SMS. This module provides
+   two types of login —Faculty login and Student login.
 
 
